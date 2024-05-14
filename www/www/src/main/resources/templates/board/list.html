@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{layout :: setFragment(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="container-sm">
+            <br> <h1>Board List Page</h1> <br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">title</th>
+                    <th scope="col">writer</th>
+                    <th scope="col">regdate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bvo:${list}">
+                    <td>[[${bvo.bno}]]</td>
+                    <td><a th:href="@{/board/detail(bno=${bvo.getBno()})}">[[${bvo.title}]]</a></td>
+                    <td>[[${bvo.writer}]]</td>
+                    <td>[[${bvo.regAt}]]</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</th:block>
